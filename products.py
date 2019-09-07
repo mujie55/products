@@ -11,5 +11,6 @@ for product in products:
 	print(product[0], '的价格是:', product[1])
 
 with open('products.csv', 'w')as f:
+	f.write('商品,名称\n')
 	for product in products:
 		f.write(product[0] + ',' + product[1] + '\n')
