@@ -1,10 +1,13 @@
 products = []
 with open('products.csv', 'r')as f:
 	for line in f:
+		if '商品,名称' in line:
+			continue #继续
 		name,price= line.strip().split(',')
 		products.append([name, price])
-		
 print(products)
+
+#让使用者输入
 while True:
 	name = input('请输入商品名称:')
 	if name == 'q':
@@ -13,9 +16,11 @@ while True:
 	products.append([name, price])
 print(products)
 
+#印出所有购买记录
 for product in products:
 	print(product[0], '的价格是:', product[1])
 
+#写入档案
 with open('products.csv', 'w')as f:
 	f.write('商品,名称\n')
 	for product in products:
